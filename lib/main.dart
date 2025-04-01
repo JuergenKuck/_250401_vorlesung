@@ -77,7 +77,16 @@ class MainApp extends StatelessWidget {
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [Icon(Icons.face), Icon(Icons.face)],
+                children: [
+                  Icon(
+                    Icons.face,
+                    size: 40,
+                  ),
+                  Icon(
+                    Icons.face,
+                    size: 40,
+                  )
+                ],
               ),
             ],
           ),
