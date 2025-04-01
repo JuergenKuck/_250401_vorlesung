@@ -25,83 +25,89 @@ class MainApp extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             spacing: 16,
             children: [
-              SizedBox(height: 16),
-              Text(
-                'Hallo App Akademie!',
-                style: TextStyle(
-                  color: Colors.blue,
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              Row(
-                spacing: 8,
-                children: [
-                  Container(
-                    height: 100,
-                    width: 100,
-                    color: Colors.red,
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 32),
-                      child: FilledButton(
-                        onPressed: () {},
-                        child: Text('A'),
-                      ),
-                    ),
-                  ),
-                  Container(
-                    height: 100,
-                    width: 100,
-                    color: Colors.green,
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 32),
-                      child: FilledButton(
-                        onPressed: () {},
-                        child: Text('B'),
-                      ),
-                    ),
-                  ),
-                  Container(
-                    height: 100,
-                    width: 100,
-                    color: Colors.blue,
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 32),
-                      child: FilledButton(
-                        onPressed: () {},
-                        child: Text('C'),
-                      ),
-                    ),
-                  )
-                ],
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  Icon(
-                    Icons.face,
-                    size: 40,
-                  ),
-                  Icon(
-                    Icons.face,
-                    size: 40,
-                  )
-                ],
-              ),
+              MyHelloText(),
+              MyContainerRow(),
+              MyIconRow(),
             ],
           ),
         ),
       ),
     );
   }
+}
 
-  // Methoden
+class MyHelloText extends StatelessWidget {
+  const MyHelloText({super.key});
 
-  void buttonClick() {
-    print('Button wurde geklicked!');
+  @override
+  Widget build(BuildContext context) {
+    return Column(children: [
+      SizedBox(height: 16),
+      Text(
+        'Hallo App Akademie!',
+        style: TextStyle(
+          color: Colors.blue,
+          fontSize: 20,
+          fontWeight: FontWeight.bold,
+        ),
+      )
+    ]);
   }
+}
 
-  void foo() {
-    print('Hallo an alle!');
+class MyContainer extends StatelessWidget {
+  const MyContainer({super.key, required this.text, required this.color});
+
+  final String text;
+  final Color color;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 100,
+      width: 100,
+      color: color,
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 32),
+        child: FilledButton(
+          onPressed: () {},
+          child: Text(text),
+        ),
+      ),
+    );
+  }
+}
+
+class MyContainerRow extends StatelessWidget {
+  const MyContainerRow({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(spacing: 8, children: [
+      MyContainer(text: 'A', color: Colors.red),
+      MyContainer(text: 'B', color: Colors.green),
+      MyContainer(text: 'C', color: Colors.blue),
+    ]);
+  }
+}
+
+class MyIconRow extends StatelessWidget {
+  const MyIconRow({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children: [
+        Icon(
+          Icons.face,
+          size: 40,
+        ),
+        Icon(
+          Icons.face,
+          size: 40,
+        )
+      ],
+    );
   }
 }
